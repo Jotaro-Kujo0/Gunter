@@ -20,7 +20,7 @@ Gunter from Adventure time here with you on slack! Its a Slack bot built with No
 - `/gunter-stardance` - Get a stardance info message
 - `/gunter-quote` - Get a random quote
 - `/gunter-anime` - Get a random anime recommendation
-<<<<<<< HEAD
+
 - `/gunter-you-dont-know-who-you-are` - Reference to the actual show
 - `/gunter-grob-gob-glob-grod` - Fun response command
 - `/gunter-orgalorg` - ????????
@@ -31,7 +31,7 @@ Gunter from Adventure time here with you on slack! Its a Slack bot built with No
 - `/gunter-you-dont-know-who-you-are` - Alias for the same lyric reference
 - `/gunter-grob-gob-glob-grod` - Fun response command
 - `/gunter-kitten` - Gunter's little
->>>>>>> c1c130d (	modified:   README.md)
+
 
 
 ## Requirements
