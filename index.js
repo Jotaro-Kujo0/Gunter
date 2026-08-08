@@ -85,6 +85,11 @@ app.command("/gunter-u-dont-know-who-you-are", async ({ ack, respond }) => {
   await respond({ text: "Yes I do, I am a lyricist!" });
 });
 
+app.command("/gunter-you-dont-know-who-you-are", async ({ ack, respond }) => {
+  await ack();
+  await respond({ text: "Yes I do, I am a lyricist!" });
+});
+
 app.command("/gunter-grob-gob-glob-grod", async ({ ack, respond }) => {
   await ack();
   await respond({ text: "Those scums are the worst, they are the worst, they are the worst, they are the worst!" });
@@ -118,6 +123,11 @@ app.command("/gunter-kitten", async ({ ack, respond }) => {
 });
 
 (async () => {
-  await app.start();
-  console.log("bot is running!");
+  try {
+    await app.start();
+    console.log("bot is running!");
+  } catch (error) {
+    console.error("Unable to start app:", error);
+    process.exit(1);
+  }
 })();

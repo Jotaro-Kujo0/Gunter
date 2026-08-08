@@ -20,10 +20,18 @@ Gunter from Adventure time here with you on slack! Its a Slack bot built with No
 - `/gunter-stardance` - Get a stardance info message
 - `/gunter-quote` - Get a random quote
 - `/gunter-anime` - Get a random anime recommendation
+<<<<<<< HEAD
 - `/gunter-you-dont-know-who-you-are` - Reference to the actual show
 - `/gunter-grob-gob-glob-grod` - Fun response command
 - `/gunter-orgalorg` - ????????
 - `/gunter-kitten` - Gunter's little kid
+=======
+- `/gunter-orgalorg` - Secret response command
+- `/gunter-u-dont-know-who-you-are` - Does gunter know who he is!?
+- `/gunter-you-dont-know-who-you-are` - Alias for the same lyric reference
+- `/gunter-grob-gob-glob-grod` - Fun response command
+- `/gunter-kitten` - Gunter's little
+>>>>>>> c1c130d (	modified:   README.md)
 
 
 ## Requirements
@@ -60,7 +68,7 @@ node index.js
 - External APIs used:
   - `catfact.ninja`
   - `official-joke-api.appspot.com`
-  - `api.quotable.io`
+  - `zenquotes.io`
   - `api.jikan.moe`
 
 In the mean time you can test out this bot without downloading via slack hack club workspace! I will deploy it there, don't forget to check it out!
