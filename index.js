@@ -1,7 +1,6 @@
-javascript
-const axios = require("axios")
 require("dotenv").config();
 
+const axios = require("axios");
 const { App } = require("@slack/bolt");
 
 const app = new App({
@@ -10,18 +9,9 @@ const app = new App({
   socketMode: true
 });
 
-app.command("/gunter-hello", async ({ command, ack, respond }) => {
-  const start = Date.now();
+app.command("/gunter-hello", async ({ ack, respond }) => {
   await ack();
-  const latency = Date.now() - start;
-  await respond({ text: `Gawk-Gawk` });
-});
-
-app.command("/gunter-orgalorg", async ({ ack, respond }) => {
-  const start = Date.now();
-  await ack();
-  const latency = Date.now() - start;
-  await respond({ text: `How do you know that?` });
+  await respond({ text: "Gawk-Gawk" });
 });
 
 app.command("/gunter-help", async ({ ack, respond }) => {
@@ -37,17 +27,14 @@ app.command("/gunter-help", async ({ ack, respond }) => {
 /gunter-latency - Check the bot's latency
 /gunter-stardance - Get info about stardance
 /gunter-quote - Get a random quote
-/gunter-anime - Get a random anime recommendation 
-/gunter-orgalorg - ???????????????
-
-
-`
+/gunter-anime - Get a random anime recommendation
+/gunter-grob-gob-glob-grod - See what Gunter thinks about them.
+/gunter-orgalorg - ???????????????`
   });
 });
 
 app.command("/gunter-catfact", async ({ ack, respond }) => {
   await ack();
-
   try {
     const response = await axios.get("https://catfact.ninja/fact");
     await respond({ text: `Cat Fact:\n${response.data.fact}` });
@@ -58,7 +45,6 @@ app.command("/gunter-catfact", async ({ ack, respond }) => {
 
 app.command("/gunter-anime", async ({ ack, respond }) => {
   await ack();
-
   try {
     const response = await axios.get("https://api.jikan.moe/v4/random/anime");
     const anime = response.data.data;
@@ -72,12 +58,10 @@ app.command("/gunter-anime", async ({ ack, respond }) => {
 
 app.command("/gunter-quote", async ({ ack, respond }) => {
   await ack();
-
   try {
-    const response = await axios.get("https://api.quotable.io/random");
-    await respond({
-      text: `Random Quote:\n"${response.data.content}" - ${response.data.author}`
-    });
+    const response = await axios.get("https://zenquotes.io/api/random");
+    const quote = response.data[0]; // zenquotes returns an array
+    await respond({ text: `Random Quote:\n"${quote.q}" - ${quote.a}` });
   } catch (err) {
     await respond({ text: "Failed to fetch a quote." });
   }
@@ -85,70 +69,35 @@ app.command("/gunter-quote", async ({ ack, respond }) => {
 
 app.command("/gunter-stardance", async ({ ack, respond }) => {
   await ack();
-
-  try {
-    await respond({
-      text: "Stardance is a mysterious cosmic phenomenon that occurs in the depths of space. It's said to be a mesmerizing display of lights and colors, often associated with celestial events."
-    });
-  } catch (err) {
-    await respond({ text: "Failed to provide information about stardance." });
-  }
+  await respond({
+    text: "Stardance is a Hack Club event that this project was made for. Go check it out!"
+  });
 });
 
 app.command("/gunter-ask", async ({ ack, respond }) => {
   await ack();
-
-  try {
-    await respond({
-      text: "Wenk Wenk! I dont know that, Im a penguin! "
-    });
-  } catch (err) {
-    await respond({ text: "Failed to respond." });
-  }
+  await respond({ text: "Wenk Wenk! I dont know that, Im a penguin! " });
 });
 
 app.command("/gunter-you-dont-know-who-you-are", async ({ ack, respond }) => {
   await ack();
-
-  try {
-    await respond({
-      text: "Yes I do, I am a lyricist!"
-    });
-  } catch (err) {
-    await respond({ text: "Failed to respond." });
-  }
+  await respond({ text: "Yes I do, I am a lyricist!" });
 });
 
 app.command("/gunter-grob-gob-glob-grod", async ({ ack, respond }) => {
   await ack();
-
-  try {
-    await respond({
-      text: "Those scums are the worst, they are the worst, they are the worst, they are the worst!"
-    });
-  } catch (err) {
-    await respond({ text: "Failed to respond." });
-  }
+  await respond({ text: "Those scums are the worst, they are the worst, they are the worst, they are the worst!" });
 });
 
 app.command("/gunter-joke", async ({ ack, respond }) => {
   await ack();
-
   try {
     const response = await axios.get("https://official-joke-api.appspot.com/random_joke");
-    await respond({
-      text:
-`${response.data.setup}
-
-
-
-${response.data.punchline}`
-    });
+    await respond({ text: `${response.data.setup}\n${response.data.punchline}` });
   } catch (err) {
     await respond({ text: "Failed to fetch a joke." });
   }
 });
-
 
 app.command("/gunter-latency", async ({ ack, respond }) => {
   const start = Date.now();
@@ -159,20 +108,15 @@ app.command("/gunter-latency", async ({ ack, respond }) => {
 
 app.command("/gunter-orgalorg", async ({ ack, respond }) => {
   await ack();
-
-  try {
-    await respond({ text: "How do you know that..." });
-  } catch (err) {
-    await respond({ text: "Failed to respond." });
-  }
+  await respond({ text: "How do you know that... ?" });
 });
 
 app.command("/gunter-kitten", async ({ ack, respond }) => {
   await ack();
-
-  try {
-    await respond({ text: "My child, I wonder what happened to it." });
-  } catch (err) {
-    await respond({ text: "Failed to respond." });
-  }
+  await respond({ text: "My child, I wonder what happened to it." });
 });
+
+(async () => {
+  await app.start();
+  console.log("bot is running!");
+})();
