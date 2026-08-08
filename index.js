@@ -29,6 +29,7 @@ app.command("/gunter-help", async ({ ack, respond }) => {
 /gunter-quote - Get a random quote
 /gunter-anime - Get a random anime recommendation
 /gunter-grob-gob-glob-grod - See what Gunter thinks about them.
+/gunter-u-dont-know-who-you-are - Does gunter know who he is!?
 /gunter-orgalorg - ???????????????`
   });
 });
@@ -79,7 +80,7 @@ app.command("/gunter-ask", async ({ ack, respond }) => {
   await respond({ text: "Wenk Wenk! I dont know that, Im a penguin! " });
 });
 
-app.command("/gunter-you-dont-know-who-you-are", async ({ ack, respond }) => {
+app.command("/gunter-u-dont-know-who-you-are", async ({ ack, respond }) => {
   await ack();
   await respond({ text: "Yes I do, I am a lyricist!" });
 });
