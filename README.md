@@ -15,17 +15,15 @@ Gunter from Adventure time here with you on slack! Its a Slack bot built with No
 - `/gunter-hello` - Shows an hello message
 - `/gunter-help` - Show help text with available commands
 - `/gunter-catfact` - Get a cat fact
-- `/gunter-ask` - Ask the bot a question
 - `/gunter-joke` - Get a random joke
 - `/gunter-latency` - Check the bot's latency
 - `/gunter-stardance` - Get a stardance info message
 - `/gunter-quote` - Get a random quote
 - `/gunter-anime` - Get a random anime recommendation
-- `/gunter-orgalorg` - Secret response command
 - `/gunter-you-dont-know-who-you-are` - Reference to the actual show
 - `/gunter-grob-gob-glob-grod` - Fun response command
 - `/gunter-orgalorg` - ????????
-- `/gunter-kitten` - Gunter's little 
+- `/gunter-kitten` - Gunter's little kid
 
 
 ## Requirements
