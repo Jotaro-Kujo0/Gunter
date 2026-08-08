@@ -156,3 +156,23 @@ app.command("/gunter-latency", async ({ ack, respond }) => {
   const latency = Date.now() - start;
   await respond({ text: `Latency: ${latency}ms` });
 });
+
+app.command("/gunter-orgalorg", async ({ ack, respond }) => {
+  await ack();
+
+  try {
+    await respond({ text: "How do you know that..." });
+  } catch (err) {
+    await respond({ text: "Failed to respond." });
+  }
+});
+
+app.command("/gunter-kitten", async ({ ack, respond }) => {
+  await ack();
+
+  try {
+    await respond({ text: "My child, I wonder what happened to it." });
+  } catch (err) {
+    await respond({ text: "Failed to respond." });
+  }
+});
