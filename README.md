@@ -49,7 +49,6 @@ SLACK_BOT_TOKEN=xoxb-your-bot-token
 SLACK_APP_TOKEN=xapp-your-app-token
 ```
 
-3. Ensure your Slack app has the slash commands configured and that the app is installed to your workspace.
 
 ## Running the bot
 
@@ -57,7 +56,7 @@ SLACK_APP_TOKEN=xapp-your-app-token
 node index.js
 ```
 
-## Notes
+## Notes from me
 
 - This project uses `@slack/bolt` for Slack app handling
 - External APIs used:
@@ -66,6 +65,6 @@ node index.js
   - `api.quotable.io`
   - `api.jikan.moe`
 
-## License
+In the mean time you can test out this bot without downloading via slack hack club workspace! I will deploy it there, don't forget to check it out!
 
-This project is licensed under the ISC License.
+If you dont feel it doesnt capture the soul of gunter or you have a comment about this bot, you can always message me at @Boyra_Zeren_ on slack!
