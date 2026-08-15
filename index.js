@@ -47,15 +47,37 @@ app.command("/gunter-catfact", async ({ ack, respond }) => {
 app.command("/gunter-anime", async ({ ack, respond }) => {
   await ack();
   try {
-    const response = await axios.get("https://api.jikan.moe/v4/random/anime");
-    const anime = response.data.data;
+    // 1. Get the total number of anime entries
+    const info = await axios.post("https://graphql.anilist.co", {
+      query: `query { Page(page: 1, perPage: 1) { pageInfo { total } media(type: ANIME) { id } } }`
+    });
+    const total = info.data.data.Page.pageInfo.total; // ~19,000+
+
+    // 2. Pick a random anime via a random page
+    const randomPage = Math.floor(Math.random() * total) + 1;
+    const response = await axios.post("https://graphql.anilist.co", {
+      query: `query($page: Int) {
+        Page(page: $page, perPage: 1) {
+          media(type: ANIME) {
+            title { romaji english }
+            siteUrl
+          }
+        }
+      }`,
+      variables: { page: randomPage }
+    });
+
+    const anime = response.data.data.Page.media[0];
+    if (!anime) throw new Error("no anime found");
     await respond({
-      text: `Random Anime Recommendation:\nTitle: ${anime.title}\nURL: ${anime.url}`
+      text: `Random Anime Recommendation:\nTitle: ${anime.title.english || anime.title.romaji}\nURL: ${anime.siteUrl}`
     });
   } catch (err) {
+    console.error(err); // log so you can debug later
     await respond({ text: "Failed to fetch an anime recommendation." });
   }
 });
+
 
 app.command("/gunter-quote", async ({ ack, respond }) => {
   await ack();
